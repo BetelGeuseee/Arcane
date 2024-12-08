@@ -1,0 +1,14 @@
+Arcane Programming Language Schema
+
+Dynamically typed, imperative programming language.
+
+1. summon : variable declaration
+            for example:
+            summon x;
+2. reveal : for printing
+3 ether : null value
+
+
+
+
+
