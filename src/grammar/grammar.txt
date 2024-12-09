@@ -9,6 +9,17 @@ Dynamically typed, imperative programming language.
 3 ether : null value
 
 
+identifier or keyword or literal?
+
+literal:
+   string literal = "var"
+   numeric values = numbers // all kinds of numbers
+
+"ace"
+ "asdaskdadh
+  kjdhskjahdkahd"
+
+
 
 
 

@@ -31,4 +31,10 @@ public class Arcane {
              arcane.runPrompt();
          }
     }
+    public static void error(int line,String message){
+        report(line,message);
+    }
+    private static void report(int line,String message){
+        System.err.println("[In line "+line+"]"+"Error: "+message);
+    }
 }

@@ -8,9 +8,10 @@ public class Token {
     private String lexeme;
     private int line;  //used for giving meaningful error for user
 
-    public Token(TokenType type,Object literal,String lexeme){
+    public Token(TokenType type,Object literal,String lexeme,int line){
         this.type = type;
         this.literal = literal;
         this.lexeme = lexeme;
+        this.line = line;
     }
 }
