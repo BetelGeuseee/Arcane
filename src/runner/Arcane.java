@@ -1,16 +1,27 @@
 package runner;
 
 import lexer.Lexer;
+import model.Token;
 
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class Arcane {
-    public void runPrompt(){
 
+    public void runPrompt() throws IOException {
+       InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+       BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+       for(;;){ //infinite loop
+           System.out.println("-> ");
+           String line = bufferedReader.readLine();
+           if(line == null) break;
+           run(line);
+       }
     }
     public void runScript(String filePath) throws IOException {
         byte[] bytes = Files.readAllBytes(Paths.get(filePath)); //raw bytes
@@ -18,6 +29,7 @@ public class Arcane {
     }
     public void run(String source){
        Lexer lexer =new Lexer(source);
+       List<Token> tokens = lexer.getTokens();
 
     }
     public static void main(String[] args) throws IOException {

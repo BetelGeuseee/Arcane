@@ -19,7 +19,15 @@ literal:
  "asdaskdadh
   kjdhskjahdkahd"
 
+   123.45
+   char c =1;
+   current = 2
+   char c =3
+   current = .
+    peekNext()
 
-
+for identifier
+123abc abc123 class summon
+while(isAlphaNumeric())
 
 
