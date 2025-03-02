@@ -3,10 +3,10 @@ package model;
 import model.enums.TokenType;
 
 public class Token {
-    private TokenType type;
-    private Object literal;
-    private String lexeme;
-    private int line;  //used for giving meaningful error for user
+    public TokenType type;
+    public Object literal;
+    public String lexeme;
+    public int line;  //used for giving meaningful error for user
 
     public Token(TokenType type,Object literal,String lexeme,int line){
         this.type = type;
