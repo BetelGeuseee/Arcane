@@ -34,7 +34,7 @@ public class PrettyPrinter implements Visitor<String> {
         StringBuilder builder = new StringBuilder();
         builder.append("(").append(name);
         for(Expr expr: exprs){
-            builder.append("");
+            builder.append(" ");
             builder.append(expr.accept(this));
         }
         builder.append(")");
@@ -45,9 +45,9 @@ public class PrettyPrinter implements Visitor<String> {
     public static void main(String[] args) {
         Expr expression = new BinaryExpr(
                 new UnaryExpr(
-                        new Token(TokenType.MINUS, "-", null, 1),
+                        new Token(TokenType.MINUS, null, "-", 1),
                         new LiteralExpr(123)),
-                new Token(TokenType.STAR, "*", null, 1),
+                new Token(TokenType.STAR, null, "*", 1),
                 new GroupingExpr(
                         new LiteralExpr(45.67)));
         System.out.println(new PrettyPrinter().print(expression));
