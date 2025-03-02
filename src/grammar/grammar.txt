@@ -15,7 +15,7 @@ literal:
    string literal = "var"
    numeric values = numbers // all kinds of numbers
 
-"ace"
+"dock"
  "asdaskdadh
   kjdhskjahdkahd"
 
