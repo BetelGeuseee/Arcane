@@ -1,0 +1,183 @@
+# Arcane Programming Language Interpreter
+
+Arcane is a dynamically typed, imperative programming language designed for simplicity and flexibility. This project provides an interpreter for the Arcane language, enabling users to write and execute Arcane scripts seamlessly.
+
+## Table of Contents
+
+- [Features](#features)
+- [Arcane Language Overview](#arcane-language-overview)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Running in Interactive Prompt](#running-in-interactive-prompt)
+  - [Running Arcane Scripts](#running-arcane-scripts)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- **Dynamic Typing:** Variables are dynamically typed, allowing for flexible coding patterns.
+- **Imperative Paradigm:** Supports imperative programming constructs for clear and straightforward code execution.
+- **Interactive Prompt:** Execute Arcane code in an interactive REPL environment.
+- **Script Execution:** Run Arcane scripts from files for larger projects and automation.
+- **Extensible Architecture:** Modular design allows for easy extension and customization of language features.
+
+## Arcane Language Overview
+
+Arcane is designed with a simple yet powerful syntax, making it accessible for beginners while offering the flexibility needed for complex applications. Key language constructs include:
+
+- **Variable Declaration:**
+  ```arcane
+  summon x;
+  ```
+
+- **Printing Output:**
+  ```arcane
+  reveal x;
+  ```
+
+- **Null Value:**
+  ```arcane
+  ether
+  ```
+
+- **Literals:**
+  - **String Literal:** `"Hello, World!"`
+  - **Numeric Values:** `123.45`
+
+- **Comments:**
+  ```arcane
+  // This is a single-line comment
+  ```
+
+## Installation
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/yourusername/arcane.git
+   ```
+2. **Navigate to the Project Directory:**
+   ```bash
+   cd arcane
+   ```
+3. **Build the Project:**
+   Ensure you have JDK 17 installed. You can compile the project using your preferred IDE (e.g., IntelliJ IDEA) or via the command line:
+   ```bash
+   javac -d out/production/arcane src/**/*.java
+   ```
+
+## Usage
+
+### Running in Interactive Prompt
+
+Arcane provides an interactive prompt (REPL) for executing commands on the fly.
+
+1. **Start the Interactive Prompt:**
+   ```bash
+   java -cp out/production/arcane runner.Arcane
+   ```
+2. **Use the Prompt:**
+   ```
+   -> summon x;
+   -> reveal x;
+   ```
+
+### Running Arcane Scripts
+
+You can execute Arcane scripts saved in `.arc` files.
+
+1. **Create an Arcane Script:**
+   ```arcane
+   // example.arc
+   summon x;
+   x = 10;
+   reveal x;
+   ```
+
+2. **Run the Script:**
+   ```bash
+   java -cp out/production/arcane runner.Arcane example.arc
+   ```
+
+## Project Structure
+
+```
+arcane/
+├── src/
+│   ├── interpreter/
+│   │   └── Interpreter.java
+│   ├── generator/
+│   │   └── SyntaxTreeNodeGenerator.java
+│   ├── runner/
+│   │   └── Arcane.java
+│   ├── grammar/
+│   │   └── grammar.txt
+│   ├── parser/
+│   │   └── Parser.java
+│   ├── lexer/
+│   │   └── Lexer.java
+│   ├── model/
+│   │   ├── Expr.java
+│   │   ├── UnaryExpr.java
+│   │   ├── BinaryExpr.java
+│   │   ├── GroupingExpr.java
+│   │   ├── LiteralExpr.java
+│   │   ├── Token.java
+│   │   ├── enums/
+│   │   │   └── TokenType.java
+│   │   └── visitor/
+│   │       ├── Visitor.java
+│   │       └── impl/
+│   │           └── PrettyPrinter.java
+│   └── .gitignore
+├── .idea/
+│   ├── vcs.xml
+│   ├── uiDesigner.xml
+│   ├── .gitignore
+│   ├── modules.xml
+│   ├── misc.xml
+│   └── workspace.xml
+├── out/
+│   └── production/arcane/
+│       └── grammar/
+│           └── grammar.txt
+└── arcane.iml
+```
+
+### Key Components
+
+- **Lexer (`Lexer.java`):** Tokenizes the source code into meaningful tokens.
+- **Parser (`Parser.java`):** Parses tokens based on the grammar to build an abstract syntax tree (AST).
+- **Interpreter (`Interpreter.java`):** Executes the AST to perform the intended operations.
+- **Runner (`Arcane.java`):** Entry point for running Arcane in either interactive or script mode.
+- **Model (`model` package):** Defines the structure of expressions and tokens used by the interpreter.
+- **Visitor Pattern (`Visitor.java` & `PrettyPrinter.java`):** Implements the visitor design pattern for traversing and processing the AST.
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. **Fork the Repository**
+2. **Create a New Branch:**
+   ```bash
+   git checkout -b feature/YourFeature
+   ```
+3. **Commit Your Changes:**
+   ```bash
+   git commit -m "Add your feature"
+   ```
+4. **Push to the Branch:**
+   ```bash
+   git push origin feature/YourFeature
+   ```
+5. **Open a Pull Request**
+
+Please ensure your code follows the project's coding standards and includes appropriate tests.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+*README generated by o1 mini*
