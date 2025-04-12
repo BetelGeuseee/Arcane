@@ -31,3 +31,47 @@ for identifier
 while(isAlphaNumeric())
 
 
+expression -> literal | unary | binary | grouping;
+literal -> NUMBER | STRING | "true" | "false" | "nil"
+grouping -> "(" expression ")" ;
+unary -> ("-"|"!") expression ;
+binary -> expression operator expression ;
+operator -> "==" | "!=" | "<" | "<=" | ">" | ">=" | "+" | "-" | "*" | "/" ;
+
+understanding precedence and associativity
+
+E -> E + E | E * E | id
+
+Here E is expression and id is number or any simple value
+
+With our grammar, there are two different ways to see how this expression could be structured
+(i.e. two different parse trees)
+
+It might be read as (id + id) * id or (id * id) + id
+
+Both interpretation are possible because our rule doesnt indicate which operation should be done first.
+This is what it means to be ambiguous.
+
+Removing it?
+Create separate layers for each operator
+one level for addition
+one level for multiplication
+and one for the basic values (ids)
+
+Expression -> Term | Expression + Term
+Term -> Factor | Term * Factor
+Factor -> id
+
+final grammar
+-----------------------
+expression → equality ;
+equality→ comparison ( ( "!=" | "==" ) comparison )* ;
+comparison→ term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+term→ factor ( ( "-" | "+" ) factor )* ;
+factor→ unary ( ( "/" | "*" ) unary )* ;
+unary→ ( "!" | "-" ) unary
+primary→ NUMBER | STRING | "true" | "false" | "nil"
+| primary ;
+| "(" expression ")" ;
+
+
