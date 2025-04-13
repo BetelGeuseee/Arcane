@@ -1,7 +1,11 @@
 package runner;
 
 import lexer.Lexer;
+import model.Expr;
 import model.Token;
+import model.enums.TokenType;
+import model.visitor.impl.PrettyPrinter;
+import parser.Parser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,6 +34,10 @@ public class Arcane {
     public void run(String source){
        Lexer lexer =new Lexer(source);
        List<Token> tokens = lexer.getTokens();
+       Parser parser = new Parser(tokens);
+       Expr expression = parser.parse();
+
+        System.out.println(new PrettyPrinter().print(expression));
 
     }
     public static void main(String[] args) throws IOException {
@@ -43,10 +51,20 @@ public class Arcane {
              arcane.runPrompt();
          }
     }
-    public static void error(int line,String message){
-        report(line,message);
+    public static void error(int line, String message) {
+        report(line, "", message);
     }
-    private static void report(int line,String message){
-        System.err.println("[In line "+line+"]"+"Error: "+message);
+
+    public static void error(Token token, String message) {
+        if (token.type == TokenType.EOF) {
+            report(token.line, " at end", message);
+        } else {
+            report(token.line, " at '" + token.lexeme + "'", message);
+        }
+    }
+    private static void report(int line, String where,
+                               String message) {
+        System.err.println(
+                "[line " + line + "] Error" + where + ": " + message);
     }
 }

@@ -74,4 +74,13 @@ primary→ NUMBER | STRING | "true" | "false" | "nil"
 | primary ;
 | "(" expression ")" ;
 
+In our hierarchy, the “primary” expressions (like a NUMBER or a literal) bind the strongest,
+and then unary, factor (for multiplication and division), term (for addition and subtraction), comparison (for <, <=, >, >=),
+and then finally equality. This means equality operators have the lowest precedence among these operators.
+They are applied last—after the other operations.
+
+So, we choose equality as the entry point because it’s at the top of our expression hierarchy,
+not because equality itself has the highest binding power. If an expression doesn’t include equality operators,
+ the equality rule will simply pass the result from the next level (comparison) upward. If it does include an equality operator,
+ the parser first fully processes the lower-level parts of the expression (which bind tighter) and then applies the equality operator at the end.
 
